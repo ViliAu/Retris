@@ -1,0 +1,206 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6532440335386229213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6532440335386229212}
+  m_Layer: 0
+  m_Name: Graphics
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6532440335386229212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6532440335386229213}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5808427968640261977}
+  m_Father: {fileID: 6532440335505818853}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6532440335505818856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6532440335505818853}
+  - component: {fileID: 6532440335505818858}
+  - component: {fileID: 6532440335505818859}
+  - component: {fileID: 9027756734478584927}
+  m_Layer: 0
+  m_Name: Pickup_Pistol_Ammo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6532440335505818853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6532440335505818856}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -18.25, y: 0.5, z: 2.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6532440335386229212}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6532440335505818858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6532440335505818856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36a410ab360f15044956d7ea80e65172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityName: pickup_ammo_pistol
+  weaponType: 1
+  amount: 20
+  unlock: 0
+  pickupSound: {fileID: 8300000, guid: 57895a2961b640c43b3a6aba28535af9, type: 3}
+--- !u!114 &6532440335505818859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6532440335505818856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c1eb6c52b7928e479918d1e2aff5320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 30
+  rotateAxis: {x: 0, y: 1, z: 0}
+  hoverSpeed: 2
+  hoverAmount: 0.1
+--- !u!65 &9027756734478584927
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6532440335505818856}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5990864, y: 0.59765244, z: 0.23553851}
+  m_Center: {x: 0.005782664, y: 0, z: -0.010058746}
+--- !u!1001 &1576570722395272259
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6532440335386229212}
+    m_Modifications:
+    - target: {fileID: -4216859302048453862, guid: 170c8a0f0c543e04fb4ede89b6ee0c02,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 170c8a0f0c543e04fb4ede89b6ee0c02,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 170c8a0f0c543e04fb4ede89b6ee0c02,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 170c8a0f0c543e04fb4ede89b6ee0c02,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.19190177
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 170c8a0f0c543e04fb4ede89b6ee0c02,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.6805687
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 170c8a0f0c543e04fb4ede89b6ee0c02,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.19190177
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 170c8a0f0c543e04fb4ede89b6ee0c02,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6805687
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 170c8a0f0c543e04fb4ede89b6ee0c02,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 170c8a0f0c543e04fb4ede89b6ee0c02,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 170c8a0f0c543e04fb4ede89b6ee0c02,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 170c8a0f0c543e04fb4ede89b6ee0c02,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 31.494001
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 170c8a0f0c543e04fb4ede89b6ee0c02,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -4973734387028869240, guid: 4f6c240ed1020da449355d6ad29b3403,
+        type: 3}
+    - target: {fileID: -1504981713932161579, guid: 170c8a0f0c543e04fb4ede89b6ee0c02,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 3663770855688936717, guid: a15b2fc098ffddf46a1f671261f7e191,
+        type: 3}
+    - target: {fileID: -1504981713932161579, guid: 170c8a0f0c543e04fb4ede89b6ee0c02,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: -4907982557009795279, guid: 8440e9225407a7a4a907a3e3b23f3138,
+        type: 3}
+    - target: {fileID: -927199367670048503, guid: 170c8a0f0c543e04fb4ede89b6ee0c02,
+        type: 3}
+      propertyPath: m_Name
+      value: Pickup_PistolAmmo
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 170c8a0f0c543e04fb4ede89b6ee0c02, type: 3}
+--- !u!4 &5808427968640261977 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 170c8a0f0c543e04fb4ede89b6ee0c02,
+    type: 3}
+  m_PrefabInstance: {fileID: 1576570722395272259}
+  m_PrefabAsset: {fileID: 0}

@@ -1,0 +1,31 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DoubleBarreled : Weapon {
+
+    [Header("Alt fire")]
+    [SerializeField] private float force = 1f; 
+
+    public override void Fire() {
+        if (!base.CanFire(base.fire)) {
+            return;
+        }
+        base.Fire();
+    }
+
+    public override void AltFire() {
+        if (!base.CanFire(base.altFire)) {
+            return;
+        }
+        base.AltFire();
+        // Throw player
+        Vector3 dbForce = -EntityManager.Player.Player_Camera.head.transform.forward *
+            Mathf.Clamp01(Mathf.Cos(Vector3.Angle(EntityManager.Player.Player_Camera.head.transform.forward, Vector3.down)*Mathf.PI/180)) * force;
+        EntityManager.Player.Player_Controller.velocity += dbForce;
+    }
+
+    public override void Reload() {
+        base.Reload();
+    }
+}

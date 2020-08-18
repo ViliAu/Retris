@@ -86,12 +86,11 @@ MonoBehaviour:
   fireSound: {fileID: 8300000, guid: 66918f45efaa98e4bb768ce4b67db2a8, type: 3}
   altFireSound: {fileID: 8300000, guid: 66918f45efaa98e4bb768ce4b67db2a8, type: 3}
   reloadSound: {fileID: 8300000, guid: 66918f45efaa98e4bb768ce4b67db2a8, type: 3}
-  swayAmount: 0.2
-  swaySpeed: 6
-  swayBounds: {x: 0.1, y: 0.1}
   currentMag: 0
   currentReserve: 0
   unlocked: 0
+  a: {fileID: 0}
+  b: {fileID: 0}
 --- !u!114 &2954244215235373491
 MonoBehaviour:
   m_ObjectHideFlags: 0

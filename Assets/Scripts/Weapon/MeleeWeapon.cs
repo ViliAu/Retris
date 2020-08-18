@@ -6,6 +6,13 @@ public class MeleeWeapon : Weapon {
 
     private MeleeAnimator meleeAnimator = null;
 
+    [SerializeField] private Transform a;
+    [SerializeField] private Transform b;
+
+    private void Update() {
+        Debug.DrawLine(a.transform.position, b.transform.position);
+    }
+
     protected override void Start() {
         base.Start();
         meleeAnimator = GetComponent<MeleeAnimator>();

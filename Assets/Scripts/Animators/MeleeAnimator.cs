@@ -9,6 +9,7 @@ public class MeleeAnimator : MonoBehaviour {
 
     private Animator animator;
     private Weapon weapon;
+    private float hit = 0;
 
     private void Start() {
         animator = transform.GetComponent<Animator>();
@@ -33,7 +34,11 @@ public class MeleeAnimator : MonoBehaviour {
         if (animator == null) {
             return;
         }
-        animator.SetFloat("meleeId", Random.Range(0, attacks));
+        float last = hit;
+        if ((hit = Random.Range(0, attacks)) == last) {
+            PlayFireAnimation();
+        }
+        animator.SetFloat("meleeId", hit);
         animator.SetTrigger("Fire");
     }
 

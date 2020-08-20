@@ -4,18 +4,62 @@ using UnityEngine;
 
 public class MeleeWeapon : Weapon {
 
+    [SerializeField] private Vector2 swing = default;
+
     private MeleeAnimator meleeAnimator = null;
+    private bool swinging = false;
 
-    [SerializeField] private Transform a;
-    [SerializeField] private Transform b;
-
-    private void Update() {
-        Debug.DrawLine(a.transform.position, b.transform.position);
-    }
+    private Transform[] bladeRay = new Transform[2]; 
+    private List<int> targets = new List<int>();
 
     protected override void Start() {
         base.Start();
         meleeAnimator = GetComponent<MeleeAnimator>();
+        bladeRay[0] = transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).Find("BladeRay.A");
+        bladeRay[1] = transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).Find("BladeRay.B");
+    }
+
+    void Update() {
+        CastOverlap();
+        Debug.DrawLine(bladeRay[0].transform.position, bladeRay[1].transform.position);
+    }
+
+    private void CastOverlap() {
+        if (!swinging) {
+            return;
+        }
+        Collider[] cols;
+        cols = Physics.OverlapCapsule(bladeRay[0].transform.position, bladeRay[1].transform.position, 0.07f, fire.hitMask, QueryTriggerInteraction.Ignore);
+        if (cols.Length > 0) {
+            HitTargets(cols);
+        }
+    }
+
+    private void HitTargets(Collider[] cols) {
+        Health h;
+        for (int i = 0; i < cols.Length; i++) {
+            if (targets.Count == 0) {
+                if ((h = cols[i].GetComponent<Health>()) != null) {
+                        GiveDamage(h);
+                }
+                targets.Add(cols[i].gameObject.GetInstanceID());
+                continue;
+            }
+            for (int j = 0; j < targets.Count; j++) {
+                if (cols[i].gameObject.GetInstanceID() == targets[j]) {
+                    continue;
+                }
+            }
+            if ((h = cols[i].GetComponent<Health>()) != null) {
+                GiveDamage(h);
+            }
+            targets.Add(cols[i].gameObject.GetInstanceID());
+        }
+    }
+
+    private void GiveDamage(Health health) {
+        health.TakeDamage(fire.damage);
+        SoundSystem.PlaySound2D("impact_shit");
     }
 
     /// <summary>
@@ -30,9 +74,6 @@ public class MeleeWeapon : Weapon {
         SoundSystem.PlaySound2D(equipSound.name);
     }
 
-    /// <summary>
-    /// Plays all the visual overhead of shooting (animation, sounds), subtracts ammo and sets last fired
-    /// </summary>
     public override void Fire() {
         if (!CanFire(fire)) {
             return;
@@ -40,37 +81,30 @@ public class MeleeWeapon : Weapon {
         meleeAnimator.PlayFireAnimation();
         SoundSystem.PlaySound2D(fireSound.name);
         fire.lastFired = Time.time;
+
+        // Melee logic
+        swinging = true;
+        Invoke("StartSwing", swing.x);
+        Invoke("CancelSwing", swing.y);
     }
 
-    /// <summary>
-    /// Plays all the visual overhead of alt shooting (animation, sounds), subtracts ammo and sets last fired
-    /// </summary>
+    private void StartSwing() {
+        swinging = true;
+    }
+
+    private void CancelSwing() {
+        swinging = false;
+        targets.Clear();
+    }
+
     public override void AltFire() {
         meleeAnimator.PlayAltFireAnimation();
         SoundSystem.PlaySound2D(altFireSound.name);
     }
 
-    /// <summary>
-    /// Plays all the visual overhead of reloading (animation, sounds) and starts a reload coroutine
-    /// </summary>
     public override void Reload() {
         meleeAnimator.PlayReloadAnimation();
         SoundSystem.PlaySound2D(reloadSound.name);
-    }
-
-    /// <summary>
-    /// Spawns the projectile(s)
-    /// </summary>
-    protected override void SpawnProjectile(FireMode fireMode) {
-        Projectile clone = Instantiate(fireMode.projectile, transform.position + transform.rotation * fireMode.bulletOffset, transform.parent.rotation) as Projectile;
-        if (Physics.Raycast(transform.parent.position + transform.parent.forward, transform.parent.forward, out hit, 1000, fireMode.hitMask, QueryTriggerInteraction.Ignore)) {
-            clone.transform.LookAt(hit.point);
-        }
-        else {
-            clone.transform.LookAt(transform.parent.forward * 100);
-        }
-        clone.SetupProjectile(fireMode.damage, fireMode.velocity, fireMode.lifespan, LayerMask.GetMask("Default"));
-        clone.transform.rotation *= GetSpread(fireMode.spread);
     }
 
     protected override bool CanFire(FireMode fireMode) {

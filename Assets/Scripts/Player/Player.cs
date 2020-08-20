@@ -46,7 +46,7 @@ public class Player : MonoBehaviour {
     public PlayerWeapon Player_Weapon {
         get {
             if (pwep == null) {
-                pwep = transform.Find("Head").Find("Gunhold").GetComponent<PlayerWeapon>();
+                pwep = this.Player_Camera.transform.Find("Gunhold").GetComponent<PlayerWeapon>();
             }
             return pwep;
         }

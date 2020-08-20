@@ -230,6 +230,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  swayAmount: 0.2
+  swaySpeed: 6
+  swayBounds: {x: 0.1, y: 0.1}
 --- !u!1 &976069342635405872
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,7 +246,7 @@ GameObject:
   - component: {fileID: 976069342635405873}
   - component: {fileID: 976069342635405884}
   - component: {fileID: 976069342635405885}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -499,7 +502,7 @@ GameObject:
   m_Component:
   - component: {fileID: 976069343238808996}
   - component: {fileID: 976069343238808997}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player_Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -513,7 +516,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 976069343238808999}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -545,6 +548,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 976069342351067405}
     m_Modifications:
+    - target: {fileID: 3791448105893476046, guid: 44baab72b808d804688825591484ecc8,
+        type: 3}
+      propertyPath: fire.velocity
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791448105893476046, guid: 44baab72b808d804688825591484ecc8,
+        type: 3}
+      propertyPath: aimMask.m_Bits
+      value: 1331
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791448105893476046, guid: 44baab72b808d804688825591484ecc8,
+        type: 3}
+      propertyPath: fire.hitMask.m_Bits
+      value: 1331
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791448105893476046, guid: 44baab72b808d804688825591484ecc8,
+        type: 3}
+      propertyPath: altFire.hitMask.m_Bits
+      value: 1331
+      objectReference: {fileID: 0}
     - target: {fileID: 3919809607924065363, guid: 44baab72b808d804688825591484ecc8,
         type: 3}
       propertyPath: m_Name
@@ -637,6 +660,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoubleBarrel
       objectReference: {fileID: 0}
+    - target: {fileID: 1674260628792543673, guid: 8710235c2590c54418b534ae6c1cc9c9,
+        type: 3}
+      propertyPath: aimMask.m_Bits
+      value: 1331
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674260628792543673, guid: 8710235c2590c54418b534ae6c1cc9c9,
+        type: 3}
+      propertyPath: fire.hitMask.m_Bits
+      value: 1331
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674260628792543673, guid: 8710235c2590c54418b534ae6c1cc9c9,
+        type: 3}
+      propertyPath: altFire.hitMask.m_Bits
+      value: 1331
+      objectReference: {fileID: 0}
     - target: {fileID: 1674260628792543678, guid: 8710235c2590c54418b534ae6c1cc9c9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -719,6 +757,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 976069342351067405}
     m_Modifications:
+    - target: {fileID: 1111323544135819715, guid: 4dbc731c80008724cb1ada1b997a0a29,
+        type: 3}
+      propertyPath: fire.hitMask.m_Bits
+      value: 1079
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111323544135819715, guid: 4dbc731c80008724cb1ada1b997a0a29,
+        type: 3}
+      propertyPath: aimMask.m_Bits
+      value: 1331
+      objectReference: {fileID: 0}
+    - target: {fileID: 5765651569976991730, guid: 4dbc731c80008724cb1ada1b997a0a29,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0019
+      objectReference: {fileID: 0}
     - target: {fileID: 6028245600280458619, guid: 4dbc731c80008724cb1ada1b997a0a29,
         type: 3}
       propertyPath: m_Name
@@ -778,6 +831,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7634935538728600679, guid: 4dbc731c80008724cb1ada1b997a0a29,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0019
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4dbc731c80008724cb1ada1b997a0a29, type: 3}

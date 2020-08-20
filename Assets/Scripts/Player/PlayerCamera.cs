@@ -7,16 +7,22 @@ public class PlayerCamera : MonoBehaviour {
     private Vector2 camEuler = default;
     [SerializeField] private float speed = 10f;
     [SerializeField] private Vector3 offset = default;
+    private Rigidbody rig;
 
     private void Start() {
-        //head = transform.Find("Head");
         head = transform;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        rig = GetComponent<Rigidbody>();
     }
 
     private void Update() {
         UpdateCamera();
+        UpdatePosition();
+    }
+
+    private void FixedUpdate() {
+        
     }
 
     private void UpdateCamera() {
@@ -29,7 +35,9 @@ public class PlayerCamera : MonoBehaviour {
 
         EntityManager.Player.transform.rotation = Quaternion.Euler (new Vector3(0, camEuler.y, 0));
         transform.rotation = Quaternion.Euler (new Vector3(camEuler.x, camEuler.y, 0));
-        
+    }
+
+    private void UpdatePosition() {
         transform.position = Vector3.Lerp(transform.position, EntityManager.Player.transform.position + offset, speed * Time.deltaTime);
     }
 }

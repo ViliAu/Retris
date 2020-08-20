@@ -20,8 +20,8 @@ public class DoubleBarreled : Weapon {
         }
         base.AltFire();
         // Throw player
-        Vector3 dbForce = -EntityManager.Player.Player_Camera.head.transform.forward *
-            Mathf.Clamp01(Mathf.Cos(Vector3.Angle(EntityManager.Player.Player_Camera.head.transform.forward, Vector3.down)*Mathf.PI/180)) * force;
+        Vector3 dbForce = -EntityManager.Player.Player_Camera.transform.forward *
+            Mathf.Clamp01(Mathf.Cos(Vector3.Angle(EntityManager.Player.Player_Camera.transform.forward, Vector3.down)*Mathf.PI/180)) * force;
         EntityManager.Player.Player_Controller.velocity += dbForce;
     }
 

@@ -132,8 +132,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 765461966646090860}
-  - component: {fileID: 4946993251782641140}
   - component: {fileID: 2622117010184148848}
+  - component: {fileID: 8789101440822867119}
   m_Layer: 2
   m_Name: SlideRocket
   m_TagString: Untagged
@@ -157,18 +157,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4946993251782641140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8970908257097171586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfe6c095d4a684f4f8afd2a30ddf64d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!96 &2622117010184148848
 TrailRenderer:
   serializedVersion: 2
@@ -275,6 +263,23 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &8789101440822867119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8970908257097171586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf8fffa64870de4a94d13e18a1e7863, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 4
+  force: 2000
+  particles: {fileID: 7454325202300905607, guid: e6c6d714466b5754ba8b7a4bb1e6a2d0,
+    type: 3}
+  particleLifeTime: 2.5
 --- !u!1001 &3614340715383140427
 PrefabInstance:
   m_ObjectHideFlags: 0

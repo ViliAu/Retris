@@ -27,7 +27,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 607804656884100448}
+  - {fileID: 5554609409176241273}
   m_Father: {fileID: 2451678021443033342}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 3087607245618184714}
   - component: {fileID: 3957303474204053450}
   - component: {fileID: 2125780029076079501}
+  - component: {fileID: 7540887405930243431}
   m_Layer: 10
   m_Name: Skele_Shotgun
   m_TagString: Untagged
@@ -102,6 +103,9 @@ MonoBehaviour:
   magSize: 10
   reloadTime: 1
   maxReserve: 60
+  aimMask:
+    serializedVersion: 2
+    m_Bits: 0
   fire:
     autofire: 0
     firerate: 20
@@ -134,12 +138,9 @@ MonoBehaviour:
     lifespan: 0
     lastFired: 0
   equipSound: {fileID: 0}
-  fireSound: {fileID: 8300000, guid: d48fab93fa670f344b0acdacf8672c9e, type: 3}
+  fireSound: {fileID: 8300000, guid: 09db104400c72224f89cf484bc942870, type: 3}
   altFireSound: {fileID: 0}
   reloadSound: {fileID: 0}
-  swayAmount: 0.2
-  swaySpeed: 6
-  swayBounds: {x: 0.1, y: 0.1}
   currentMag: 0
   currentReserve: 0
   unlocked: 0
@@ -201,6 +202,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!54 &7540887405930243431
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8098152516587933661}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &607804656884100963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -485,7 +502,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9914532a0a1c2de44b67a1ed515dd85a, type: 3}
---- !u!4 &607804656884100448 stripped
+--- !u!4 &5554609409176241273 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 9914532a0a1c2de44b67a1ed515dd85a,
     type: 3}

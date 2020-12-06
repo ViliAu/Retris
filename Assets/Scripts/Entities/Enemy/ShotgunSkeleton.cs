@@ -33,8 +33,9 @@ public class ShotgunSkeleton : Enemy {
         if (lastUpdated + posUpdateInterval < Time.time) {
             targetPos = UpdatePosition();
         }
-        graphics.transform.LookAt(EntityManager.Player.transform, Vector3.up);
-        transform.position = Vector3.Lerp(transform.position, EntityManager.Player.transform.position + targetPos, speed * Time.deltaTime);
+        if (EntityManager.LocalPlayer != null)
+            graphics.transform.LookAt(EntityManager.LocalPlayer.transform, Vector3.up);
+        transform.position = Vector3.Lerp(transform.position, EntityManager.LocalPlayer.transform.position + targetPos, speed * Time.deltaTime);
     }
 
     private void Shoot() {

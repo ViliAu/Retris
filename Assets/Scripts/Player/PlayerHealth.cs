@@ -14,7 +14,8 @@ public class PlayerHealth : Health {
 
     protected override void Die() {
         transform.position = Vector3.up * 2;
-        FindObjectOfType<SkeletonSpawner>().spawnInterval = 10;
+        health = maxHealth;
+        //FindObjectOfType<SkeletonSpawner>().spawnInterval = 10;
     }
 
 }

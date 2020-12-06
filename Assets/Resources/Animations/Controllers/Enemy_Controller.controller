@@ -194,6 +194,15 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: enemyId
     m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 8294014444751033162, guid: 0fe9c894678c83841a9f00dd98aa8af9,
+      type: 3}
+    m_Threshold: 1
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: enemyId
+    m_Mirror: 0
   m_BlendParameter: enemyId
   m_BlendParameterY: meleeId
   m_MinThreshold: 0

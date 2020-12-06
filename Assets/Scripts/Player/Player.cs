@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    [SerializeField] private PlayerCamera playerCamera = null;
-
     private PlayerController pc;
     public PlayerController Player_Controller {
         get {
@@ -30,13 +28,7 @@ public class Player : MonoBehaviour {
     public PlayerCamera Player_Camera {
         get {
             if (pcam == null) {
-                pcam = FindObjectOfType<PlayerCamera>();
-                if (pcam == null) {
-                     if (playerCamera == null) {
-                        Debug.LogError("PlayerCamera not assigned to player");
-                    }
-                    pcam = Instantiate(playerCamera, transform.position, transform.rotation);
-                }
+                pcam = transform.GetComponent<PlayerCamera>();
             }
             return pcam;
         }
@@ -46,7 +38,7 @@ public class Player : MonoBehaviour {
     public PlayerWeapon Player_Weapon {
         get {
             if (pwep == null) {
-                pwep = this.Player_Camera.transform.Find("Gunhold").GetComponent<PlayerWeapon>();
+                pwep = transform.Find("Player_Camera").Find("Gunhold").GetComponent<PlayerWeapon>();
             }
             return pwep;
         }

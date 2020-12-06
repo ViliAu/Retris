@@ -41,21 +41,21 @@ public class PlayerPickup : MonoBehaviour {
     }
 
     private void ManageHealth(Pickup p) {
-        if (EntityManager.Player.Player_Health.full()) {
+        if (EntityManager.LocalPlayer.Player_Health.full()) {
             return;
         }
         else {
-            EntityManager.Player.Player_Health.AddHealth(p.amount);
+            EntityManager.LocalPlayer.Player_Health.AddHealth(p.amount);
             p.DestroyPickup();
         }
     }
 
     private void ManageAmmo(Pickup p) {
-        if (EntityManager.Player.Player_Weapon.weapons[p.weaponType].full()) {
+        if (EntityManager.LocalPlayer.Player_Weapon.weapons[p.weaponType].full()) {
             return;
         }
         else {
-            EntityManager.Player.Player_Weapon.weapons[p.weaponType].AddAmmo(p.amount, p.unlock);
+            EntityManager.LocalPlayer.Player_Weapon.weapons[p.weaponType].AddAmmo(p.amount, p.unlock);
             p.DestroyPickup();
         }
     }

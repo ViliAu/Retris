@@ -29,7 +29,7 @@ public class PlayerWeapon : MonoBehaviour {
     }
 
     private void Sway() {
-        Vector2 swayPos = EntityManager.Player.Player_Input.mouseInput * swayAmount;
+        Vector2 swayPos = EntityManager.LocalPlayer.Player_Input.mouseInput * swayAmount;
         swayPos.x = Mathf.Clamp(swayPos.x, -swayBounds.x, swayBounds.x);
         swayPos.y = Mathf.Clamp(swayPos.y, -swayBounds.y, swayBounds.y);
         transform.localPosition = Vector3.Lerp(transform.localPosition, initialPos - (Vector3)swayPos, swaySpeed * Time.deltaTime);
@@ -37,23 +37,23 @@ public class PlayerWeapon : MonoBehaviour {
 
     private void CheckInput() {
         // Check if we have autofire on
-        if (EntityManager.Player.Player_Input.autoFire && weapons[activeWeapon].fire.autofire) {
+        if (EntityManager.LocalPlayer.Player_Input.autoFire && weapons[activeWeapon].fire.autofire) {
             weapons[activeWeapon].Fire();
         }
-        if (EntityManager.Player.Player_Input.fired) {
+        if (EntityManager.LocalPlayer.Player_Input.fired) {
             weapons[activeWeapon].Fire();
             return;
         }
-        if (EntityManager.Player.Player_Input.altFired) {
+        if (EntityManager.LocalPlayer.Player_Input.altFired) {
             weapons[activeWeapon].AltFire();
             return;
         }
-        if (EntityManager.Player.Player_Input.reloaded) {
+        if (EntityManager.LocalPlayer.Player_Input.reloaded) {
             weapons[activeWeapon].Reload();
             return;
         }
-        if (EntityManager.Player.Player_Input.pressedNum != -1) {
-            ChangeWeapon(EntityManager.Player.Player_Input.pressedNum, false);
+        if (EntityManager.LocalPlayer.Player_Input.pressedNum != -1) {
+            ChangeWeapon(EntityManager.LocalPlayer.Player_Input.pressedNum, false);
         }
     }
 

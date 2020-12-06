@@ -2,12 +2,12 @@
 
 public class Projectile : MonoBehaviour {
 
-    private float damage;
+    protected float damage;
     /*private float range;*/
-    private float velocity;
-    private float instantiateMoment;
-    private float lifespan;
-    private LayerMask layerMask;
+    protected float velocity;
+    protected float instantiateMoment;
+    protected float lifespan;
+    protected LayerMask hitMask;
     
     /* RAycast stuff */
     Ray ray;
@@ -15,8 +15,8 @@ public class Projectile : MonoBehaviour {
 
     
 
-    GameObject OverlapCheck() {
-        Collider[] cols = Physics.OverlapSphere(transform.position, .2f, 0, QueryTriggerInteraction.Collide);
+    private GameObject OverlapCheck() {
+        Collider[] cols = Physics.OverlapSphere(transform.position, .3f, hitMask, QueryTriggerInteraction.Collide);
         // Return the first collider that has a health script,  if there's one
         for (int i = 0; i < cols.Length; i++) {
             Health health = cols[i].GetComponent<Health>();
@@ -37,24 +37,24 @@ public class Projectile : MonoBehaviour {
         UpdateProjectile();
     }
 
-    void CollisionCheck() {
+    private void CollisionCheck() {
         ray = new Ray(transform.position, transform.forward);
-        if (Physics.Raycast(ray, out hit, velocity * Time.deltaTime, layerMask)) {
+        if (Physics.Raycast(ray, out hit, velocity * Time.deltaTime, hitMask)) {
             Health health = hit.transform.GetComponent<Health>();
             if (health != null) {
                 health.TakeDamage(damage);
-                DestroyProjectile();
             }
+            DestroyProjectile();
         }
     }
 
-    void UpdateProjectile() {
+    private void UpdateProjectile() {
         if (Time.time > instantiateMoment + lifespan)
             DestroyProjectile();
         transform.position += transform.forward * velocity * Time.deltaTime;
     }
 
-    void DestroyProjectile() {
+    protected virtual void DestroyProjectile() {
         Destroy(gameObject);
     }
 
@@ -62,7 +62,7 @@ public class Projectile : MonoBehaviour {
         this.damage = damage;
         /*this.range = range;*/
         this.velocity = velocity;
-        this.layerMask = layerMask;
+        this.hitMask = layerMask;
         this.lifespan = lifespan;
         instantiateMoment = Time.time;
 
